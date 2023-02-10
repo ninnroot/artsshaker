@@ -1,31 +1,49 @@
 {
-  "name": "artsshaker",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.8",
-    "@next/font": "13.1.6",
-    "@types/node": "18.13.0",
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
-    "eslint": "8.33.0",
-    "eslint-config-next": "13.1.6",
-    "next": "13.1.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.5"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.6"
-  }
+    "name": "artsshaker",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+    },
+    "dependencies": {
+        "@emotion/react": "^11.10.5",
+        "@emotion/styled": "^11.10.5",
+        "@mui/material": "^5.11.8",
+        "@next/font": "13.1.6",
+        "@types/node": "18.13.0",
+        "@types/react": "18.0.27",
+        "@types/react-dom": "18.0.10",
+        "eslint-config-next": "13.1.6",
+        "next": "13.1.6",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "typescript": "4.9.5"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.51.0",
+        "@typescript-eslint/parser": "^5.51.0",
+        "autoprefixer": "^10.4.13",
+        "eslint": "^8.33.0",
+        "eslint-plugin-react": "^7.32.2",
+        "husky": "^8.0.3",
+        "lint-staged": "^13.1.1",
+        "postcss": "^8.4.21",
+        "prettier": "^2.8.4",
+        "tailwindcss": "^3.2.6"
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,json}": [
+            "eslint . --fix",
+            "prettier --write ."
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    }
 }
