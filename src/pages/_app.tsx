@@ -1,6 +1,19 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import "@/styles/globals.css";
+import { createTheme, StyledEngineProvider, ThemeProvider } from "@mui/material";
+import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  const theme = createTheme({
+    typography: {
+      fontFamily: ["Roboto", "sans-serif"].join(",")
+    }
+  })
+  return (
+
+      <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+
+      </ThemeProvider>
+
+  );
 }
