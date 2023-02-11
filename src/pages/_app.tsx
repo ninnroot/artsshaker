@@ -1,12 +1,19 @@
+import Layout from '@/components/Layout';
 import '@/styles/globals.css';
-import {
-  createTheme,
-  StyledEngineProvider,
-  ThemeProvider,
-} from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material';
+import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
+import { ReactElement, ReactNode } from 'react';
 
-export default function App({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const theme = createTheme({
     typography: {
       fontFamily: ['Roboto', 'sans-serif'].join(','),
@@ -15,9 +22,13 @@ export default function App({ Component, pageProps }: AppProps) {
       },
     },
   });
-  return (
+
+  const getLayout = Component.getLayout ?? ((page) => page);
+  return getLayout(
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>,
   );
 }

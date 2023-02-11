@@ -3,7 +3,9 @@ import Head from 'next/head';
 import { Button, Card, Typography } from '@mui/material';
 import Banner from '@/components/Banner';
 import { NavBar } from '@/components/navigation';
-export default function Home() {
+import { NextPageWithLayout } from './_app';
+import { ReactElement } from 'react';
+const Home:NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -13,10 +15,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <NavBar></NavBar>
+        
         <Banner
           title="Artsshaker"
-          tagline="Portfolio builder and client manager for artists"
+          tagline="Portfolio builder & client manager for artists"
           btn1={
             <Button variant="contained" className="rounded-lg">
               Get Started
@@ -24,7 +26,9 @@ export default function Home() {
           }
           btn2={
             <Button variant="outlined" className="rounded-lg">
-              <Typography variant='button' className='font-bold'>Tutorial</Typography>
+              <Typography variant="button" className="font-bold">
+                Tutorial
+              </Typography>
             </Button>
           }
         ></Banner>
@@ -32,3 +36,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;
