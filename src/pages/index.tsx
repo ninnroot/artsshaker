@@ -1,13 +1,9 @@
 import Head from 'next/head';
 
-
 import { Button, Card, Typography } from '@mui/material';
 import Banner from '@/components/Banner';
-
-
-
+import { NavBar } from '@/components/navigation';
 export default function Home() {
-
   return (
     <>
       <Head>
@@ -17,9 +13,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Banner title='Arts Shaker' tagline='Client manager for artists'
-        btn1={<Button variant='contained' className='rounded-lg'>Get Started</Button>}
-        btn2={<Button variant='outlined' className='rounded-lg'>Tutorial</Button>}
+        <NavBar></NavBar>
+        <Banner
+          title="Artsshaker"
+          tagline="Portfolio builder and client manager for artists"
+          btn1={
+            <Button variant="contained" className="rounded-lg">
+              Get Started
+            </Button>
+          }
+          btn2={
+            <Button variant="outlined" className="rounded-lg">
+              <Typography variant='button' className='font-bold'>Tutorial</Typography>
+            </Button>
+          }
         ></Banner>
       </main>
     </>

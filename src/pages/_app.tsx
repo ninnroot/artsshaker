@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
     typography: {
       fontFamily: ['Roboto', 'sans-serif'].join(','),
       button: {
-        textTransform: "none"
+        textTransform: 'none',
       },
     },
   });
