@@ -10,10 +10,15 @@ const CustomInput: React.FunctionComponent<CustomInputProps> = (props) => {
   return (
     <>
       <TextField
-      variant='standard'
+        variant="standard"
         {...props.formik.getFieldProps(props.name)}
-        error={props.formik.touched[props.name] && Boolean(props.formik.errors[props.name])}
-        helperText={props.formik.touched[props.name] && props.formik.errors[props.name]}
+        error={
+          props.formik.touched[props.name] &&
+          Boolean(props.formik.errors[props.name])
+        }
+        helperText={
+          props.formik.touched[props.name] && props.formik.errors[props.name]
+        }
         {...props}
       ></TextField>
     </>

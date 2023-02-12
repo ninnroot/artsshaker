@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Rosario:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss/base";
 
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 html,
@@ -20,4 +22,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+@layer components{
+  .link-simple {
+    @apply text-blue-500 hover:underline;
+  }
 }

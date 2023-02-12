@@ -5,7 +5,7 @@ import Banner from '@/components/Banner';
 import { NavBar } from '@/components/navigation';
 import { NextPageWithLayout } from './_app';
 import { ReactElement } from 'react';
-const Home:NextPageWithLayout = () => {
+const Home: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -15,7 +15,6 @@ const Home:NextPageWithLayout = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        
         <Banner
           title="Artsshaker"
           tagline="Portfolio builder & client manager for artists"
@@ -35,6 +34,6 @@ const Home:NextPageWithLayout = () => {
       </main>
     </>
   );
-}
+};
 
 export default Home;

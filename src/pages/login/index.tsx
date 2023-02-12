@@ -5,7 +5,6 @@ import { useFormik } from 'formik';
 import Link from 'next/link';
 import React from 'react';
 import * as yup from 'yup';
-
 const Register: React.FunctionComponent = () => {
   const formik = useFormik({
     initialValues: {
@@ -15,11 +14,7 @@ const Register: React.FunctionComponent = () => {
     },
     validationSchema: yup.object({
       email: yup.string().required('This field is required'),
-      password: yup.string(),
-      confirmPassword: yup
-        .string()
-        .required('This field is required.')
-        .oneOf([yup.ref('password'), ''], "Passwords don't match"),
+      password: yup.string().required('This field is required.'),
     }),
     onSubmit(values) {
       console.log(values);
@@ -28,25 +23,19 @@ const Register: React.FunctionComponent = () => {
   return (
     <>
       <div className="flex justify-center w-[100vw]">
-        <FormContainer formik={formik} title="Register">
+        <FormContainer title="Login" formik={formik}>
           <CustomInput label="Email" name="email" formik={formik}></CustomInput>
           <CustomInput
             label="Password"
             name="password"
             formik={formik}
           ></CustomInput>
-          <CustomInput
-            label="Confirm password"
-            name="confirmPassword"
-            formik={formik}
-          ></CustomInput>
-
           <div className="mt-2 flex flex-row justify-between items-center">
             <Button variant="contained" type="submit">
               Submit
             </Button>
             <Typography>
-              Already has an account? <Link href="/login" className='link-simple'>Log in</Link>
+              Don't have an account? <Link href="/register" className='link-simple'>Sign up</Link>
             </Typography>
           </div>
         </FormContainer>

@@ -17,18 +17,18 @@ const NavItem: React.FunctionComponent<IProps> = ({
 }) => {
   return (
     <Link href={href} onClick={onClick}>
-      <div>
+      <div className="m-2 rounded-lg p-2">
         {isSelected ? (
           <Typography
-            variant="button"
-            className="hover:text-white p-3 px-3 mx-2 rounded-lg underline"
+            variant="subtitle1"
+            className="rounded-lg underline"
           >
             {children}
           </Typography>
         ) : (
           <Typography
-            variant="button"
-            className="hover:text-white p-3 px-3 mx-2 rounded-lg"
+            variant="subtitle1"
+            className="rounded-lg"
           >
             {children}
           </Typography>

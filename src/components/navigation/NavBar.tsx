@@ -9,8 +9,8 @@ const NavBar: React.FunctionComponent = () => {
   const [selectedHref, setSelectedHref] = useState(router.pathname);
 
   useEffect(() => {
-    setSelectedHref(router.pathname)
-  }, [router.pathname])
+    setSelectedHref(router.pathname);
+  }, [router.pathname]);
 
   const navItems: { href: string; text: string }[] = [
     { href: '/', text: 'Home' },
@@ -19,7 +19,7 @@ const NavBar: React.FunctionComponent = () => {
     { href: '/pricing', text: 'Pricing' },
   ];
   return (
-    <nav className="flex items-center flex-wrap justify-between bg-[#50577A] gap-4 p-3 text-white">
+    <nav className="flex items-center flex-wrap justify-between bg-yellow-primary gap-4 p-3 text-white">
       <div className="flex items-center flex-wrap">
         {navItems.map((c) => (
           <NavItem
