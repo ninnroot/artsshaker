@@ -11,9 +11,9 @@ const DirectoryContainer: React.FunctionComponent<IProps> = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col gap-5 w-[100%]">
+      <div className="flex w-[100%] flex-col gap-5">
         {directories.map((c, i) => (
-          <DirectoryItem  key={i} directory={c}></DirectoryItem>
+          <DirectoryItem key={i} directory={c}></DirectoryItem>
         ))}
       </div>
     </>

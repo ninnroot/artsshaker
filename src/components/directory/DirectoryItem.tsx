@@ -7,13 +7,18 @@ export interface IDirectoryItemProps {
 }
 
 const DirectoryItem: React.FunctionComponent<IDirectoryItemProps> = ({
-  directory: {href, displayText}
+  directory: { href, displayText },
 }) => {
   return (
     <>
-      <div className="flex flex-row justify-center items-center">
-        <a href={href} target="_blank" className="border-2 border-white border-solid p-2  w-[80%] min-w-[300px] max-w-[700px] hover:bg-black text-white hover:cursor-pointer">
-          <div className='flex justify-between items-center'>
+      <div className="flex flex-row items-center justify-center">
+        <a
+          href={href}
+          target="_blank"
+          className="w-[80%] min-w-[300px] max-w-[700px] border-2  border-solid border-white p-2 text-white hover:cursor-pointer hover:bg-black"
+          rel="noreferrer"
+        >
+          <div className="flex items-center justify-between">
             <svg viewBox="0 0 128 128" style={{ width: '30px' }}>
               <g fill="#61DAFB">
                 <circle cx="64" cy="64" r="11.4"></circle>

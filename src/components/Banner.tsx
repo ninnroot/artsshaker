@@ -10,8 +10,8 @@ interface BannerProps {
 
 const Banner: React.FC<BannerProps> = ({ title, tagline, btn1, btn2 }) => {
   return (
-    <Card className="bg-gray text-white flex flex-col items-center justify-center rounded-none">
-      <Typography variant="h2" className="p-10 font-header pb-2">
+    <Card className="flex flex-col items-center justify-center rounded-none bg-gray text-white">
+      <Typography variant="h2" className="p-10 pb-2 font-header">
         {title}
       </Typography>
       {tagline && (
@@ -19,7 +19,7 @@ const Banner: React.FC<BannerProps> = ({ title, tagline, btn1, btn2 }) => {
           {tagline}
         </Typography>
       )}
-      <div className="flex flex-row items-center justify-center gap-7 m-10 flex-wrap">
+      <div className="m-10 flex flex-row flex-wrap items-center justify-center gap-7">
         {btn1}
         {btn2}
       </div>

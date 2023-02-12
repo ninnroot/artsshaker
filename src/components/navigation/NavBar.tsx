@@ -19,8 +19,8 @@ const NavBar: React.FunctionComponent = () => {
     { href: '/pricing', text: 'Pricing' },
   ];
   return (
-    <nav className="flex items-center flex-wrap justify-between bg-yellow-primary gap-4 p-3 text-white">
-      <div className="flex items-center flex-wrap">
+    <nav className="flex flex-wrap items-center justify-between gap-4 bg-yellow-primary p-3 text-white">
+      <div className="flex flex-wrap items-center">
         {navItems.map((c) => (
           <NavItem
             key={c.href}

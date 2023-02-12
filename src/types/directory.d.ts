@@ -1,4 +1,4 @@
 export default interface IDirectory {
-    href?: string,
-    displayText?: string
+  href?: string;
+  displayText?: string;
 }

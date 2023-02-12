@@ -22,7 +22,7 @@ const Register: React.FunctionComponent = () => {
   });
   return (
     <>
-      <div className="flex justify-center w-[100vw]">
+      <div className="flex w-[100vw] justify-center">
         <FormContainer title="Login" formik={formik}>
           <CustomInput label="Email" name="email" formik={formik}></CustomInput>
           <CustomInput
@@ -30,12 +30,15 @@ const Register: React.FunctionComponent = () => {
             name="password"
             formik={formik}
           ></CustomInput>
-          <div className="mt-2 flex flex-row justify-between items-center">
+          <div className="mt-2 flex flex-row items-center justify-between">
             <Button variant="contained" type="submit">
               Submit
             </Button>
             <Typography>
-              Don't have an account? <Link href="/register" className='link-simple'>Sign up</Link>
+              Don't have an account?{' '}
+              <Link href="/register" className="link-simple">
+                Sign up
+              </Link>
             </Typography>
           </div>
         </FormContainer>

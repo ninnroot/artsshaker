@@ -19,17 +19,11 @@ const NavItem: React.FunctionComponent<IProps> = ({
     <Link href={href} onClick={onClick}>
       <div className="m-2 rounded-lg p-2">
         {isSelected ? (
-          <Typography
-            variant="subtitle1"
-            className="rounded-lg underline"
-          >
+          <Typography variant="subtitle1" className="rounded-lg underline">
             {children}
           </Typography>
         ) : (
-          <Typography
-            variant="subtitle1"
-            className="rounded-lg"
-          >
+          <Typography variant="subtitle1" className="rounded-lg">
             {children}
           </Typography>
         )}

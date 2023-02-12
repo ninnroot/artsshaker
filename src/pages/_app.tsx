@@ -13,7 +13,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+export default function App({ Component, pageProps, ...appProps }: AppPropsWithLayout) {
   const theme = createTheme({
     typography: {
       fontFamily: ['Roboto', 'sans-serif'].join(','),
@@ -22,13 +22,27 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       },
     },
   });
+  const getLayout = Component.getLayout || ((page) => page);
+  const getContent = () => {
 
-  const getLayout = Component.getLayout ?? ((page) => page);
-  return getLayout(
-    <ThemeProvider theme={theme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>,
-  );
+    if (appProps.router.pathname.startsWith('/u')) {
+      return getLayout(
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>,
+      );
+    }
+    return getLayout(
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>,
+    );
+  };
+
+  return (
+    <>{getContent()}</>
+  )
+  
 }
