@@ -7,7 +7,7 @@ export default NextAuth({
     DiscordProvider({
       clientId: String(process.env['DISCORD_CLIENT_ID']),
       clientSecret: String(process.env['DISCORD_CLIENT_SECRET']),
-      authorization:"https://localhost:443/api/auth/callback/discord/authorize"
+    //   authorization:"https://localhost:443/api/auth/callback/discord/authorize"
     }),
   ],
   callbacks: {
