@@ -1,14 +1,21 @@
 import DirectoryContainer from '@/components/directory/DirectoryContainer';
+import { ironOptions } from '@/lib/config/iron-config';
 import IDirectory from '@/types/directory';
 
 import { Typography } from '@mui/material';
+import { withIronSessionSsr } from 'iron-session/next';
+import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { ReactElement, useEffect } from 'react';
 import { NextPageWithLayout } from '../_app';
 
-const Profile: NextPageWithLayout = () => {
+interface IProps {
+  user: {id: number, name: string}
+}
+
+const Profile: NextPageWithLayout<IProps> = ({user}) => {
   const router = useRouter();
 
   const { username } = router.query;
@@ -39,12 +46,28 @@ const Profile: NextPageWithLayout = () => {
           className="mt-20 rounded-[50%] border-2 border-solid border-white shadow-md"
         ></Image>
         <Typography variant="h3" className="mb-4 p-3">
-          @{username}
+          @{user.name}
         </Typography>
         <DirectoryContainer directories={directories}></DirectoryContainer>
       </div>
     </>
   );
 };
+export const getServerSideProps = withIronSessionSsr(
+  async function getServerSideProps({ req }) {
+    const user = req.session.user
+    if(user){
+
+      return {props: {user}}
+    } else {
+      return {
+        notFound: true
+      }
+    }
+
+  },
+  ironOptions
+);
+
 
 export default Profile;

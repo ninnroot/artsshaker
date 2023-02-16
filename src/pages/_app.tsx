@@ -4,7 +4,6 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { ReactElement, ReactNode } from 'react';
-import { SessionProvider } from 'next-auth/react';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -16,7 +15,7 @@ type AppPropsWithLayout = AppProps & {
 
 export default function App({
   Component,
-  pageProps: { session, ...pageProps },
+  pageProps,
   ...appProps
 }: AppPropsWithLayout) {
   const theme = createTheme({
@@ -31,21 +30,17 @@ export default function App({
   const getContent = () => {
     if (appProps.router.pathname.startsWith('/u')) {
       return getLayout(
-        <SessionProvider session={session}>
           <ThemeProvider theme={theme}>
             <Component {...pageProps} />
           </ThemeProvider>
-        </SessionProvider>,
       );
     }
     return getLayout(
-      <SessionProvider session={session}>
         <ThemeProvider theme={theme}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
         </ThemeProvider>
-      </SessionProvider>,
     );
   };
 

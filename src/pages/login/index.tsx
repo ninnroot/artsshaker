@@ -1,11 +1,15 @@
 import CustomInput from '@/components/form/CustomInput';
 import FormContainer from '@/components/form/FormContainer';
 import { Button, Typography } from '@mui/material';
+import axios from 'axios';
 import { useFormik } from 'formik';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import * as yup from 'yup';
+
 const Register: React.FunctionComponent = () => {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -16,8 +20,10 @@ const Register: React.FunctionComponent = () => {
       email: yup.string().required('This field is required'),
       password: yup.string().required('This field is required.'),
     }),
-    onSubmit(values) {
-      console.log(values);
+    async onSubmit(values) {
+      router.push(
+        'https://discord.com/api/oauth2/authorize?client_id=1075686808815407175&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fcallback&response_type=code&scope=identify',
+      );
     },
   });
   return (
