@@ -12,7 +12,7 @@ export default NextAuth({
   ],
   callbacks: {
     async signIn({user, account, profile}){
-        console.log(user, account, profile)
+        fetch("https://artsshaker.vercel.app/api/"+user.name)
         return true
     }
   }
