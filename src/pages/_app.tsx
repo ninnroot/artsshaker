@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { ReactElement, ReactNode } from 'react';
+import { SessionProvider } from 'next-auth/react';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -13,7 +14,11 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-export default function App({ Component, pageProps, ...appProps }: AppPropsWithLayout) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+  ...appProps
+}: AppPropsWithLayout) {
   const theme = createTheme({
     typography: {
       fontFamily: ['Roboto', 'sans-serif'].join(','),
@@ -24,25 +29,25 @@ export default function App({ Component, pageProps, ...appProps }: AppPropsWithL
   });
   const getLayout = Component.getLayout || ((page) => page);
   const getContent = () => {
-
     if (appProps.router.pathname.startsWith('/u')) {
       return getLayout(
-        <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
-        </ThemeProvider>,
+        <SessionProvider session={session}>
+          <ThemeProvider theme={theme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </SessionProvider>,
       );
     }
     return getLayout(
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>,
+      <SessionProvider session={session}>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </SessionProvider>,
     );
   };
 
-  return (
-    <>{getContent()}</>
-  )
-  
+  return <>{getContent()}</>;
 }
