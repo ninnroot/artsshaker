@@ -1,12 +1,18 @@
-import { Button, Typography } from '@mui/material';
+import {
+  Button,
+  Typography,
+} from '@mui/material';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import LoginAvatar from './LoginAvatar';
 import NavItem from './NavItem';
 
 const NavBar: React.FunctionComponent = () => {
   const router = useRouter();
   const [selectedHref, setSelectedHref] = useState(router.pathname);
+  const session = useSession();
 
   useEffect(() => {
     setSelectedHref(router.pathname);
@@ -19,7 +25,7 @@ const NavBar: React.FunctionComponent = () => {
     { href: '/pricing', text: 'Pricing' },
   ];
   return (
-    <nav className="flex flex-wrap items-center justify-between gap-4 bg-yellow-primary p-3 text-white">
+    <nav className="flex flex-wrap items-center justify-between gap-4 bg-black p-3 text-white">
       <div className="flex flex-wrap items-center">
         {navItems.map((c) => (
           <NavItem
@@ -32,11 +38,13 @@ const NavBar: React.FunctionComponent = () => {
           </NavItem>
         ))}
       </div>
-      <Link href="/register">
-        <Button variant="contained">
-          <Typography variant="button">Sign up</Typography>
+      {session.data?.user ? (
+       <LoginAvatar user={session.data.user}></LoginAvatar>
+      ) : (
+        <Button variant="contained" onClick={(e) => signIn()}>
+          <Typography variant="button">Log In</Typography>
         </Button>
-      </Link>
+      )}
     </nav>
   );
 };

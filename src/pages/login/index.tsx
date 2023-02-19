@@ -28,7 +28,7 @@ const Register: React.FunctionComponent = () => {
   });
   return (
     <>
-      <div className="flex w-[100vw] justify-center">
+      <div className="flex w-[100vw] h-[100vh] justify-center">
         <FormContainer title="Login" formik={formik}>
           <CustomInput label="Email" name="email" formik={formik}></CustomInput>
           <CustomInput

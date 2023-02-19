@@ -1,6 +1,6 @@
 import CustomInput from '@/components/form/CustomInput';
 import FormContainer from '@/components/form/FormContainer';
-import { Button, Typography } from '@mui/material';
+import { Button, Divider, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import React from 'react';
@@ -27,7 +27,7 @@ const Register: React.FunctionComponent = () => {
   });
   return (
     <>
-      <div className="flex w-[100vw] justify-center">
+      <div className="flex w-[100vw] h-[100vh] justify-center">
         <FormContainer formik={formik} title="Register">
           <CustomInput label="Email" name="email" formik={formik}></CustomInput>
           <CustomInput
@@ -52,17 +52,6 @@ const Register: React.FunctionComponent = () => {
               </Link>
             </Typography>
           </div>
-          <div>
-              <p>
-                Login with Discord OAuth
-              </p>
-              <Link
-                href="/api/auth/signin/discord"
-                className="bg-[#7289da] text-white rounded-md px-4 py-2"
-              >
-                Login
-              </Link>
-            </div>
         </FormContainer>
       </div>
     </>

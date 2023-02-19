@@ -1,10 +1,10 @@
 import DirectoryContainer from '@/components/directory/DirectoryContainer';
-import { ironOptions } from '@/lib/config/iron-config';
 import IDirectory from '@/types/directory';
 
 import { Typography } from '@mui/material';
 import { withIronSessionSsr } from 'iron-session/next';
 import { GetServerSideProps } from 'next';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -15,10 +15,10 @@ interface IProps {
   user: { id: number; username: string; avatar: string };
 }
 
-const Profile: NextPageWithLayout<IProps> = ({ user }) => {
+const Profile: NextPageWithLayout<IProps> = () => {
   const router = useRouter();
 
-  const { username } = router.query;
+  const user = useSession().data?.user;
 
   const directories: IDirectory[] = [
     { href: 'https://instagram.com', displayText: 'instagram' },
@@ -39,33 +39,19 @@ const Profile: NextPageWithLayout<IProps> = ({ user }) => {
           <Link href="/">Artsshaker</Link>
         </Typography>
         <Image
-          src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=1024`}
+          src={(user && user?.image + "?size=480") || ""}
           width={100}
           height={100}
           alt="user profile"
           className="mt-20 rounded-[50%] border-2 border-solid border-white shadow-md"
         ></Image>
         <Typography variant="h3" className="mb-4 p-3">
-          @{user.username}
+          @{user?.name}
         </Typography>
         <DirectoryContainer directories={directories}></DirectoryContainer>
       </div>
     </>
   );
 };
-export const getServerSideProps = withIronSessionSsr(
-  async function getServerSideProps({ req }) {
-    const user = req.session.user;
-
-    if (user) {
-      return { props: { user } };
-    } else {
-      return {
-        notFound: true,
-      };
-    }
-  },
-  ironOptions,
-);
 
 export default Profile;
