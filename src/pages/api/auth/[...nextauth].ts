@@ -7,13 +7,13 @@ export default NextAuth({
     DiscordProvider({
       clientId: String(process.env['DISCORD_CLIENT_ID']),
       clientSecret: String(process.env['DISCORD_CLIENT_SECRET']),
-      authorization:"https://localhost:443/api/auth/callback/discord/authorize"
+      // authorization:"http://localhost:3000/api/auth/callback/discord/authorize",   // Comment this line out and works fine
     }),
   ],
-  callbacks: {
-    async signIn({user, account, profile}){
-        fetch("https://artsshaker.vercel.app/api/"+user.name)
-        return true
-    }
-  }
+  // callbacks: { // Comment this out as I don't know the config of .env
+  //   async signIn({user, account, profile}){
+  //       fetch("https://artsshaker.vercel.app/api/"+user.name)
+  //       return true
+  //   }
+  // }
 });
