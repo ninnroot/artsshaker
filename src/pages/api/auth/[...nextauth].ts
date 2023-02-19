@@ -1,26 +1,19 @@
-import NextAuth from 'next-auth';
-import GitHubProvider from 'next-auth/providers/github';
+import NextAuth from 'next-auth/next';
 import DiscordProvider from 'next-auth/providers/discord';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { signIn } from 'next-auth/react';
 
-require('dotenv').config();
-
-const options = {
-  // Configure one or more authentication providers
+export default NextAuth({
   providers: [
-    // GitHubProvider({
-    //     clientId: process.env.GITHUB_ID,
-    //     clientSecret: process.env.GITHUB_SECRET,
-    // }),
     DiscordProvider({
-      clientId: String(process.env.DISCORD_CLIENT_ID),
-      clientSecret: String(process.env.DISCORD_CLIENT_SECRET),
+      clientId: String(process.env['DISCORD_CLIENT_ID']),
+      clientSecret: String(process.env['DISCORD_CLIENT_SECRET']),
+      // authorization:"http://localhost:3000/api/auth/callback/discord/authorize",   // Comment this line out and works fine
     }),
   ],
-};
-
-function Auth(req: NextApiRequest, res: NextApiResponse) {
-  return NextAuth(req, res, options);
-}
-
-export default Auth;
+  // callbacks: { // Comment this out as I don't know the config of .env
+  //   async signIn({user, account, profile}){
+  //       fetch("https://artsshaker.vercel.app/api/"+user.name)
+  //       return true
+  //   }
+  // }
+});
