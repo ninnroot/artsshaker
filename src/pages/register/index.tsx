@@ -52,6 +52,17 @@ const Register: React.FunctionComponent = () => {
               </Link>
             </Typography>
           </div>
+          <div>
+              <p>
+                Login with Discord OAuth
+              </p>
+              <Link
+                href="/api/auth/signin/discord"
+                className="bg-[#7289da] text-white rounded-md px-4 py-2"
+              >
+                Login
+              </Link>
+            </div>
         </FormContainer>
       </div>
     </>
