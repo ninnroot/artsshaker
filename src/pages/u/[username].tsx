@@ -12,7 +12,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { NextPageWithLayout } from '../_app';
 
 interface IProps {
-  user: { id: number; username: string, avatar: string };
+  user: { id: number; username: string; avatar: string };
 }
 
 const Profile: NextPageWithLayout<IProps> = ({ user }) => {
