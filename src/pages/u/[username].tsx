@@ -12,10 +12,10 @@ import React, { ReactElement, useEffect } from 'react';
 import { NextPageWithLayout } from '../_app';
 
 interface IProps {
-  user: {id: number, name: string}
+  user: { id: number; username: string, avatar: string };
 }
 
-const Profile: NextPageWithLayout<IProps> = ({user}) => {
+const Profile: NextPageWithLayout<IProps> = ({ user }) => {
   const router = useRouter();
 
   const { username } = router.query;
@@ -39,14 +39,14 @@ const Profile: NextPageWithLayout<IProps> = ({user}) => {
           <Link href="/">Artsshaker</Link>
         </Typography>
         <Image
-          src="https://avatars.githubusercontent.com/u/70014160"
+          src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=1024`}
           width={100}
           height={100}
           alt="user profile"
           className="mt-20 rounded-[50%] border-2 border-solid border-white shadow-md"
         ></Image>
         <Typography variant="h3" className="mb-4 p-3">
-          @{user.name}
+          @{user.username}
         </Typography>
         <DirectoryContainer directories={directories}></DirectoryContainer>
       </div>
@@ -55,19 +55,17 @@ const Profile: NextPageWithLayout<IProps> = ({user}) => {
 };
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {
-    const user = req.session.user
-    if(user){
+    const user = req.session.user;
 
-      return {props: {user}}
+    if (user) {
+      return { props: { user } };
     } else {
       return {
-        notFound: true
-      }
+        notFound: true,
+      };
     }
-
   },
-  ironOptions
+  ironOptions,
 );
-
 
 export default Profile;
