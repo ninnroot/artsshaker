@@ -6,6 +6,11 @@ import { NavBar } from '@/components/navigation';
 import { NextPageWithLayout } from './_app';
 import { ReactElement } from 'react';
 const Home: NextPageWithLayout = () => {
+  const glassStyleConfig = {
+    boxShadow: '0 0 10px 1px rgba(0, 0, 0, .25)',
+    backdropFilter: 'blur(15px)',
+    background: 'rgba(255, 255, 255, 0.1)',
+  }
   return (
     <>
       <Head>
@@ -14,7 +19,7 @@ const Home: NextPageWithLayout = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='h-[100vh]'>
+      <main className="h-[100vh]">
         <Banner
           title="Artsshaker"
           tagline="Portfolio builder & client manager for artists"

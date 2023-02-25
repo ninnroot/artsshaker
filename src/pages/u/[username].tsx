@@ -25,12 +25,15 @@ const Profile: NextPageWithLayout<IProps> = () => {
     { href: 'https://facebook.com', displayText: 'facebook' },
     { href: 'https://linkedin.com', displayText: 'linkedin' },
   ];
+  const theme = {
+    bg: 'linear-gradient(to right, #fc00ff, #00dbde)'
+  }
 
   return (
     <>
       <div
         className="justify-star flex h-[100vh] flex-col items-center text-white"
-        style={{ background: 'linear-gradient(to right, #fc00ff, #00dbde)' }}
+        style={{ background: theme.bg }}
       >
         <Typography
           variant="h6"
@@ -39,7 +42,7 @@ const Profile: NextPageWithLayout<IProps> = () => {
           <Link href="/">Artsshaker</Link>
         </Typography>
         <Image
-          src={(user && user?.image + "?size=480") || ""}
+          src={(user && user?.image + '?size=480') || ''}
           width={100}
           height={100}
           alt="user profile"

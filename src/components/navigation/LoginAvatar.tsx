@@ -23,7 +23,7 @@ const LoginAvatar: React.FunctionComponent<IProps> = ({ user }) => {
   return (
     <>
       <div className="flex items-center gap-2">
-        <Link href={`u/${user.name}`}>
+        <Link href="/dashboard">
           <Avatar src={user.image} className="hover:cursor-pointer"></Avatar>
         </Link>
         <Typography variant="subtitle1">{user.name}</Typography>
@@ -48,6 +48,9 @@ const LoginAvatar: React.FunctionComponent<IProps> = ({ user }) => {
           }}
         >
           <Link href={`u/${user.name}`}>
+            <MenuItem>Profile</MenuItem>
+          </Link>
+          <Link href="/dashboard">
             <MenuItem>Profile</MenuItem>
           </Link>
           <MenuItem onClick={(e) => signOut()}>Logout</MenuItem>
