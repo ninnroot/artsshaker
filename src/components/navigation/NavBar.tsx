@@ -23,16 +23,11 @@ const NavBar: React.FunctionComponent = () => {
   ];
   return (
     <nav
-      className="flex flex-wrap items-center justify-between p-3 text-white"
-      style={{ background: 'linear-gradient(to right, #141e30, #243b55)' }}
+      className="flex flex-wrap items-center justify-between p-3 text-white bg-gradient-to-r from-gradient-asteroidFrom to-gradient-asteroidTo"
     >
       <div
-        className="flex flex-wrap items-center rounded-2xl"
-        style={{
-          boxShadow: '0 0 10px 1px rgba(0, 0, 0, .25)',
-          backdropFilter: 'blur(15px)',
-          background: 'rgba(255, 255, 255, .25)',
-        }}
+        className="flex flex-wrap items-center rounded-2xl bg-blue-200 backdrop-blur-sm backdrop-filter bg-opacity-20"
+
       >
         {navItems.map((c, i) => (
           <NavItem

@@ -17,11 +17,7 @@ const NavItem: React.FunctionComponent<IProps> = ({
   onClick,
   index,
 }) => {
-  const glassStyleConfig = {
-    boxShadow: '0 0 10px 1px rgba(0, 0, 0, .25)',
-    backdropFilter: 'blur(15px)',
-    background: 'rgba(255, 255, 255, 0.1)',
-  };
+
   return (
     <Link href={href} onClick={onClick}>
       <div className="">
@@ -29,24 +25,22 @@ const NavItem: React.FunctionComponent<IProps> = ({
           index === 'left' ? (
             <Typography
               variant="subtitle1"
-              className="rounded-l-2xl p-2 px-4"
-              style={glassStyleConfig}
+              className="rounded-l-2xl p-2 px-4 bg-white bg-opacity-30"
+
             >
               {children}
             </Typography>
           ) : index === 'right' ? (
             <Typography
               variant="subtitle1"
-              className="rounded-r-2xl p-2 px-4"
-              style={glassStyleConfig}
+              className="rounded-r-2xl p-2 px-4 bg-white bg-opacity-30"
             >
               {children}
             </Typography>
           ) : (
             <Typography
               variant="subtitle1"
-              className="p-2 px-4"
-              style={glassStyleConfig}
+              className="p-2 px-4 bg-white bg-opacity-30"
             >
               {children}
             </Typography>

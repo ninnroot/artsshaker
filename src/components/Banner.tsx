@@ -11,8 +11,8 @@ interface BannerProps {
 const Banner: React.FC<BannerProps> = ({ title, tagline, btn1, btn2 }) => {
   return (
     <Card
-      className="flex flex-col items-center justify-center rounded-none text-white"
-      style={{ background: 'linear-gradient(to right, #141e30, #243b55)' }}
+      className="flex flex-col items-center justify-center rounded-none text-white bg-gradient-to-r from-gradient-asteroidFrom to-gradient-asteroidTo"
+
     >
       <Typography variant="h2" className="p-10 pb-2 font-header">
         {title}

@@ -18,6 +18,10 @@ module.exports = {
         primary: '#E6AF2E',
         hover: '#8bbee8',
       },
+      gradient: {
+        asteroidFrom: '#141e30',
+        asteroidTo: '#243b55',
+      },
     },
     fontFamily: {
       header: ['Noto Sans', 'sans-serif'],

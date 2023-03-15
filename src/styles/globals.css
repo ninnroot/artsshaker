@@ -28,4 +28,7 @@ a {
   .link-simple {
     @apply text-blue-500 hover:underline;
   }
+  .glass {
+    @apply bg-blue-200 backdrop-blur-sm backdrop-filter bg-opacity-20;
+  }
 }
