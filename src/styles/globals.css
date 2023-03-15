@@ -29,6 +29,6 @@ a {
     @apply text-blue-500 hover:underline;
   }
   .glass {
-    @apply bg-blue-200 backdrop-blur-sm backdrop-filter bg-opacity-20;
+    @apply bg-blue-200 bg-opacity-20 backdrop-blur-sm backdrop-filter;
   }
 }

@@ -17,7 +17,6 @@ const NavItem: React.FunctionComponent<IProps> = ({
   onClick,
   index,
 }) => {
-
   return (
     <Link href={href} onClick={onClick}>
       <div className="">
@@ -25,22 +24,21 @@ const NavItem: React.FunctionComponent<IProps> = ({
           index === 'left' ? (
             <Typography
               variant="subtitle1"
-              className="rounded-l-2xl p-2 px-4 bg-white bg-opacity-30"
-
+              className="rounded-l-2xl bg-white bg-opacity-30 p-2 px-4"
             >
               {children}
             </Typography>
           ) : index === 'right' ? (
             <Typography
               variant="subtitle1"
-              className="rounded-r-2xl p-2 px-4 bg-white bg-opacity-30"
+              className="rounded-r-2xl bg-white bg-opacity-30 p-2 px-4"
             >
               {children}
             </Typography>
           ) : (
             <Typography
               variant="subtitle1"
-              className="p-2 px-4 bg-white bg-opacity-30"
+              className="bg-white bg-opacity-30 p-2 px-4"
             >
               {children}
             </Typography>

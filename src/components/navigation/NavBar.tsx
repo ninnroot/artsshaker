@@ -1,5 +1,6 @@
 import { Button, Typography } from '@mui/material';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -22,13 +23,10 @@ const NavBar: React.FunctionComponent = () => {
     { href: '/help', text: 'Help' },
   ];
   return (
-    <nav
-      className="flex flex-wrap items-center justify-between p-3 text-white bg-gradient-to-r from-gradient-asteroidFrom to-gradient-asteroidTo"
-    >
-      <div
-        className="flex flex-wrap items-center rounded-2xl bg-blue-200 backdrop-blur-sm backdrop-filter bg-opacity-20"
-
-      >
+    <nav className="flex flex-wrap items-center justify-between bg-gradient-to-r from-gradient-asteroidFrom to-gradient-asteroidTo p-3 text-white">
+      <div className='flex items-center gap-5'>
+      <Image src="/logo-column.png" width="30" height="60" alt="artshaker logo" className=' object-cover'></Image>
+      <div className="flex flex-wrap items-center rounded-2xl bg-blue-200 bg-opacity-20 backdrop-blur-sm backdrop-filter">
         {navItems.map((c, i) => (
           <NavItem
             index={
@@ -42,6 +40,7 @@ const NavBar: React.FunctionComponent = () => {
             {c.text}
           </NavItem>
         ))}
+      </div>
       </div>
       {session.data?.user ? (
         <LoginAvatar user={session.data.user}></LoginAvatar>
