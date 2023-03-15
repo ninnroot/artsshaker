@@ -26,8 +26,8 @@ const Profile: NextPageWithLayout<IProps> = () => {
     { href: 'https://linkedin.com', displayText: 'linkedin' },
   ];
   const theme = {
-    bg: 'linear-gradient(to right, #fc00ff, #00dbde)'
-  }
+    bg: 'linear-gradient(to right, #fc00ff, #00dbde)',
+  };
 
   return (
     <>

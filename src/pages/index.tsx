@@ -10,7 +10,7 @@ const Home: NextPageWithLayout = () => {
     boxShadow: '0 0 10px 1px rgba(0, 0, 0, .25)',
     backdropFilter: 'blur(15px)',
     background: 'rgba(255, 255, 255, 0.1)',
-  }
+  };
   return (
     <>
       <Head>

@@ -7,7 +7,7 @@ interface IProps {
   children: React.ReactNode;
   isSelected: boolean;
   onClick: any;
-  index: "left" | "right" | null;
+  index: 'left' | 'right' | null;
 }
 
 const NavItem: React.FunctionComponent<IProps> = ({
@@ -21,12 +21,12 @@ const NavItem: React.FunctionComponent<IProps> = ({
     boxShadow: '0 0 10px 1px rgba(0, 0, 0, .25)',
     backdropFilter: 'blur(15px)',
     background: 'rgba(255, 255, 255, 0.1)',
-  }
+  };
   return (
     <Link href={href} onClick={onClick}>
       <div className="">
         {isSelected ? (
-          index === "left" ? (
+          index === 'left' ? (
             <Typography
               variant="subtitle1"
               className="rounded-l-2xl p-2 px-4"
@@ -34,7 +34,7 @@ const NavItem: React.FunctionComponent<IProps> = ({
             >
               {children}
             </Typography>
-          ) : index==="right" ? (
+          ) : index === 'right' ? (
             <Typography
               variant="subtitle1"
               className="rounded-r-2xl p-2 px-4"
@@ -42,7 +42,7 @@ const NavItem: React.FunctionComponent<IProps> = ({
             >
               {children}
             </Typography>
-          ) :(
+          ) : (
             <Typography
               variant="subtitle1"
               className="p-2 px-4"
@@ -50,7 +50,7 @@ const NavItem: React.FunctionComponent<IProps> = ({
             >
               {children}
             </Typography>
-          ) 
+          )
         ) : (
           <Typography variant="subtitle1" className="p-2 px-4">
             {children}
