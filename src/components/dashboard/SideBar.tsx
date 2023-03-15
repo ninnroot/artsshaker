@@ -62,7 +62,7 @@ const SideBar: React.FunctionComponent<ISideBarProps> = ({
           </IconButton>
         </div>
         {menuItems.map((c) => (
-          <Link href={c.href}>
+          <Link key={c.href} href={c.href}>
             {selectedHref === c.href ? (
               <ListItem className="flex gap-2 bg-blue-100 bg-opacity-20 pr-20">
                 <Typography>{c.displayText}</Typography>
