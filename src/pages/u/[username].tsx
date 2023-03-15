@@ -35,12 +35,11 @@ const Profile: NextPageWithLayout<IProps> = () => {
         className="justify-star flex h-[100vh] flex-col items-center text-white"
         style={{ background: theme.bg }}
       >
-        <Typography
-          variant="h6"
-          className="ml-5 mt-5 self-start rounded-[30%] border-2 border-solid p-2 hover:cursor-pointer hover:border-white hover:border-opacity-30 hover:bg-white hover:bg-opacity-30"
-        >
-          <Link href="/">Artsshaker</Link>
-        </Typography>
+        <div className="self-start m-5">
+        <Link href="/">
+          <Image src="/logo-column.png" width="30" height="60" alt="Artsshaker logo"></Image>
+        </Link>
+        </div>
         <Image
           src={(user && user?.image + '?size=480') || ''}
           width={100}

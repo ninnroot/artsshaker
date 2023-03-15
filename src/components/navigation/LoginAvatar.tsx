@@ -51,7 +51,7 @@ const LoginAvatar: React.FunctionComponent<IProps> = ({ user }) => {
             <MenuItem>Profile</MenuItem>
           </Link>
           <Link href="/dashboard">
-            <MenuItem>Profile</MenuItem>
+            <MenuItem>Dashboard</MenuItem>
           </Link>
           <MenuItem onClick={(e) => signOut()}>Logout</MenuItem>
         </Menu>

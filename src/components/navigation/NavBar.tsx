@@ -24,23 +24,31 @@ const NavBar: React.FunctionComponent = () => {
   ];
   return (
     <nav className="flex flex-wrap items-center justify-between bg-gradient-to-r from-gradient-asteroidFrom to-gradient-asteroidTo p-3 text-white">
-      <div className='flex items-center gap-5'>
-      <Image src="/logo-column.png" width="30" height="60" alt="artshaker logo" className=' object-cover'></Image>
-      <div className="flex flex-wrap items-center rounded-2xl bg-blue-200 bg-opacity-20 backdrop-blur-sm backdrop-filter">
-        {navItems.map((c, i) => (
-          <NavItem
-            index={
-              i === 0 ? 'left' : i === navItems.length - 1 ? 'right' : null
-            }
-            key={c.href}
-            onClick={(_e: any) => setSelectedHref(c.href)}
-            isSelected={c.href === selectedHref}
-            href={c.href}
-          >
-            {c.text}
-          </NavItem>
-        ))}
-      </div>
+      <div className="flex items-center gap-5">
+        <Link href="/">
+          <Image
+            src="/logo-column.png"
+            width="30"
+            height="60"
+            alt="artshaker logo"
+            className=" object-cover"
+          ></Image>
+        </Link>
+        <div className="flex flex-wrap items-center rounded-2xl bg-blue-200 bg-opacity-20 backdrop-blur-sm backdrop-filter">
+          {navItems.map((c, i) => (
+            <NavItem
+              index={
+                i === 0 ? 'left' : i === navItems.length - 1 ? 'right' : null
+              }
+              key={c.href}
+              onClick={(_e: any) => setSelectedHref(c.href)}
+              isSelected={c.href === selectedHref}
+              href={c.href}
+            >
+              {c.text}
+            </NavItem>
+          ))}
+        </div>
       </div>
       {session.data?.user ? (
         <LoginAvatar user={session.data.user}></LoginAvatar>
