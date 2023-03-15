@@ -29,7 +29,7 @@ export default function App({
   });
   const getLayout = Component.getLayout || ((page) => page);
   const getContent = () => {
-    if (appProps.router.pathname.startsWith('/u')) {
+    if (appProps.router.pathname.startsWith('/u') || appProps.router.pathname.startsWith("/dashboard")) {
       return getLayout(
         <SessionProvider session={pageProps.session}>
           <ThemeProvider theme={theme}>
