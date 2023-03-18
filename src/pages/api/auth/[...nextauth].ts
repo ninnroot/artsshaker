@@ -7,12 +7,7 @@ export default NextAuth({
     DiscordProvider({
       clientId: String(process.env['DISCORD_CLIENT_ID']),
       clientSecret: String(process.env['DISCORD_CLIENT_SECRET']),
+      
     }),
   ],
-  // callbacks: { 
-  //   async signIn({user, account, profile}){
-  //       fetch("https://artsshaker.vercel.app/api/"+user.name)
-  //       return true
-  //   }
-  // }
 });
