@@ -9,10 +9,10 @@ export default NextAuth({
       clientSecret: String(process.env['DISCORD_CLIENT_SECRET']),
     }),
   ],
-  callbacks: { 
-    async signIn({user, account, profile}){
-        fetch("https://artsshaker.vercel.app/api/"+user.name)
-        return true
-    }
-  }
+  // callbacks: { 
+  //   async signIn({user, account, profile}){
+  //       fetch("https://artsshaker.vercel.app/api/"+user.name)
+  //       return true
+  //   }
+  // }
 });
